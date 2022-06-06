@@ -1,2 +1,2 @@
 # Leetcode-Problems
-Solve fuctions from leetcode daily problems
+Solve functions from leetcode daily problemset
