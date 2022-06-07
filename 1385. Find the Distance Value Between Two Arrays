@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
+        
+        sort(arr2.begin(),arr2.end());
+        int ans=0;
+        for(auto value:arr1){
+		int low=0,high=arr2.size()-1;
+
+            while(low<=high){
+                int mid = low + (high-low)/2;
+                 int dis= arr2[mid] - value;
+                if(-d<=dis && dis<=d)break;
+                else if(dis<d)low=mid+1;
+                else high=mid-1;
+            }
+            if(low>high) ans++;
+        }
+        return ans;
+        
+    }
+};
