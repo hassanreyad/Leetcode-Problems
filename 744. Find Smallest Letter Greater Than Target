@@ -1,0 +1,17 @@
+class Solution {
+public:
+    char nextGreatestLetter(vector<char>& v, char target) {
+        if (v.back() <= target) 
+             return v.front();
+        int low=0,high=v.size()-1;
+        int mid;
+        while(low<high){
+            mid=low + (high-low)/2;
+            if(target <v[mid])high=mid;
+            else low=mid+1;
+        }
+        
+        return v[low];
+        
+    }
+};
