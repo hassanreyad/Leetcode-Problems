@@ -1,0 +1,17 @@
+#define ll long long int
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        
+        ll high=100000,low=1;
+        ll mid;
+        while(low<=high){
+            mid=low + (high-low)/2;
+            ll square = mid*mid;
+            if(square == num)return true;
+            else if(square < num) low=mid+1;
+            else high=mid-1;
+        }
+        return false;
+    }
+};
