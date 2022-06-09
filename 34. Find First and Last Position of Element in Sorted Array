@@ -1,0 +1,25 @@
+class Solution {
+    
+    int binary(vector<int>&nums , int target){
+        int size=nums.size();
+        int high=size-1,low=0,  first=size;
+        while(low<=high){
+            int mid= low + (high  - low)/2;
+            if(nums[mid] >=target){
+                first=mid;
+                high=mid-1;
+            }
+            else low=mid+1;
+        }
+        return first;
+    }
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        
+        int first = binary(nums,target),
+        second=binary(nums,target+1)-1;
+        if(first<=second ) return {first,second};
+        else return{-1,-1};
+        
+    }
+};
