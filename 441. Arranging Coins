@@ -1,0 +1,21 @@
+#define  ll long long int
+class Solution {
+    
+public:
+    
+    int arrangeCoins(int n) {
+        
+        ll low=0,high=n;
+        while(low<=high){
+            ll mid= low + (high-low)/2;
+            ll total=(mid * (mid+1))/2;
+            if(total==n) return mid;
+            if(total > n){
+                high=mid-1;
+            }
+            else low=mid+1;
+        }
+        if(low>high) return high;
+            else return low;
+    }
+};
