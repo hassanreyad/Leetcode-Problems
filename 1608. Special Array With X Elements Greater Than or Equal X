@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int specialArray(vector<int>& v){
+        sort(v.begin(),v.end());
+        int size=v.size();
+        int largest_element = v.back(),larger=0;
+        for(int i=1;i<=largest_element;i++){
+            int low=0,high=v.size()-1;
+            while(low<=high){
+                int mid=low + (high-low)/2;
+                if(v[mid]>=i) high=mid-1;
+                else low=mid+1;
+                
+            }
+            larger=size-low;
+            if(i==larger) return i;
+        }
+        return -1;
+    }
+};
