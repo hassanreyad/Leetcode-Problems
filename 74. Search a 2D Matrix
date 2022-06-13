@@ -1,0 +1,51 @@
+******complexity O(logn)******
+
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& v, int target) {
+        
+        
+        int total_row=v.size(),total_col=v[0].size();
+        int low=0,high=total_row * total_col -1;
+        
+        while(low<=high){
+            int mid = low + (high - low)/2;
+            int row = mid/total_col;
+            int col = mid% total_col;
+            
+            if(v[row][col]==target) return true;
+            else if(v[row][col] > target) high = mid-1;
+            else low=mid+1;
+            
+        }
+        return false;
+        
+    }
+};
+
+******complexity O(n)******
+
+
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& v, int target) {
+        
+        
+        int total_row=v.size(),total_col=v[0].size();
+        int row=0,col=total_col-1;
+        
+        while(row<total_row and col>-1){
+            int value= v[row][col];
+            
+            
+            if(value ==target) return true;
+            else if(value > target) col--;
+            else row++;
+            
+        }
+        return false;
+        
+    }
+};
