@@ -1,0 +1,39 @@
+class Solution {
+public:
+    
+    int binary_search(vector<int> & arr,int low,int high,int target){
+        
+        while(low<=high){
+            
+            int mid=low + (high - low)/2;
+            
+        if(arr[mid]==target) return mid;
+        
+        if(arr[low] <= arr[mid] ){
+            
+            if(target>=arr[low] and target<=arr[mid]) return binary_search(arr,low,mid-1,target);
+            
+            return binary_search(arr,mid+1,high,target);
+            
+        }
+            
+        if(target>=arr[mid] and target<=arr[high]) return binary_search(arr,mid+1,high,target);
+            
+        return binary_search(arr,low,mid-1,target);
+        }
+        
+        return -1;
+            
+    }
+    
+    
+    
+    int search(vector<int>& nums, int target) {
+        
+        int low=0,high=nums.size()-1;
+        
+        return binary_search(nums,low,high,target);
+    }
+        
+        
+};
