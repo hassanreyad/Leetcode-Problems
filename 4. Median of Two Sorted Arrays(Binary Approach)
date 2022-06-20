@@ -1,0 +1,59 @@
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& shortarr, vector<int>& longarr) {
+        
+        int x=shortarr.size(),y=longarr.size();
+        
+        if(x>y){
+            return findMedianSortedArrays(longarr,shortarr);
+        }
+        
+        if(x==0){
+            if(y%2==0) return(float)(longarr[y/2] + longarr[(y/2)-1])/2.0;
+        
+        else return longarr[y/2.0];
+    }
+        
+        else if(y==0){
+            
+            if(x%2==0) return(float)(shortarr[x/2] + shortarr[(x/2)-1])/2.0;
+        
+        else return shortarr[x/2.0];
+            
+        }
+        
+        else{
+            int total_len=x+y;
+            int half=total_len/2;
+            
+            int start=0,end=x;
+            while(start<=end){
+                
+                int partitionx = (start+end)/2;
+                int partitiony=half-partitionx;
+                
+                int leftx=(partitionx==0)? -1e7: shortarr[partitionx-1];
+                int rightx=(partitionx==x)? 1e7:shortarr[partitionx];
+                
+                int lefty=(partitiony==0)? -1e7: longarr[partitiony-1];
+                int righty=(partitiony==y)? 1e7:longarr[partitiony];
+                
+                if(leftx<=righty and lefty<=rightx){
+                    if(total_len%2==0) return (float)((max(leftx, lefty)
+                        + min(rightx, righty)) / 2.0);
+                    
+                    else return min(rightx, righty);
+                }
+                
+                else if(lefty>rightx) start=partitionx+1;
+                else end=partitionx-1;
+            }
+            
+            
+        }
+        return 0;
+        
+        
+        
+    }
+};
