@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isValid(string s) {
+    
+    //you can include the conditon below to get less memory usage in some conditions but overall complexity is better without it
+    
+        if(s[0]==  ')' or s[0]== '}' or s[0]== ']'  or s[s.size()-1]==  '(' or s[s.size()-1]==  '{' or s[s.size()-1]==  '[' or s.size()%2!=0 )return false;
+        
+        
+        
+        stack<char> stack;
+        unordered_map<char,char> mp;
+        char a=')', b = '}' , c= ']' ;
+        mp[ a]='(';
+        mp[b]='{';
+        mp[c]='[';
+        for(char i:s){
+            if(!stack.empty() and mp[i]==stack.top()) stack.pop();
+            else stack.push(i);    
+        }
+        if(stack.empty()) return true;
+        else return false;
+        
+    }
+};
