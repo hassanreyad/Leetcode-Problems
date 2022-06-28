@@ -1,0 +1,31 @@
+class Solution {
+    
+    private:
+    void recurrsion(int n,int open,int close,vector<string>&v , string &res){
+    if(open==n and close == n){
+        v.push_back(res);
+        return;
+    }
+    
+    if(open < n){
+        res.push_back('(');
+        recurrsion(n,open+1,close,v,res);
+        res.pop_back();
+    }
+    if(close < open){
+        res.push_back(')');
+        recurrsion(n,open,close+1,v,res);
+        res.pop_back();
+    }
+    
+}
+public:
+    vector<string> generateParenthesis(int n) {
+        
+        vector<string> v;
+    string res = "";
+    recurrsion(n , 0,0,v,res);
+        return v;
+        
+    }
+};
